@@ -81,10 +81,10 @@
   .ribbon-v { position: absolute; width: 55px; height: 100%; background: #facc15; left: 50%; transform: translateX(-50%); z-index: 2; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
   .ribbon-h { position: absolute; width: 100%; height: 55px; top: 50%; transform: translateY(-50%); background: #facc15; z-index: 1; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
   
-  /* 🎀 關鍵修正：蝴蝶結定位與絲帶方向 🎀 */
+/* 🎀 蝴蝶結尖角修正：優化弧度與對齊 🎀 */
   .bow { 
     position: absolute; 
-    top: -55px; /* 上移一點點，讓絲帶看起來從下方出來 */
+    top: -50px; 
     left: 50%; 
     transform: translateX(-50%); 
     width: 220px; height: 120px; 
@@ -94,40 +94,41 @@
   .bow::before, .bow::after { 
     content: ""; 
     position: absolute; 
-    width: 110px; height: 110px; 
+    width: 100px; height: 100px; 
     background: #facc15; 
-    border-radius: 50% 50% 0 50%; 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    /* 修正旋轉中心，讓絲帶對齊 */
+    /* 關鍵修正：調整圓角比例，讓頂端變圓滑，收起尖角 */
+    border-radius: 50% 50% 10% 50%; 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
     transform-origin: bottom center; 
   }
   
-  /* 左半邊絲帶：向左偏轉修正方向 */
+  /* 左半邊絲帶：修正旋轉角度與位置 */
   .bow::before { 
-    left: 10px; /* 微微內移靠向圓心 */
-    top: 10px;
-    transform: rotate(-35deg) scaleX(1.1); /* 調整偏角，更立體 */
+    left: 20px; 
+    top: 15px;
+    transform: rotate(-40deg); 
   }
   
-  /* 右半邊絲帶：對稱修正 */
+  /* 右半邊絲帶：修正對稱與尖角問題 */
   .bow::after { 
-    right: 10px; /* 微微內移靠向圓心 */
-    top: 10px;
-    transform: rotate(125deg) scaleX(-1.1); /* 對稱修正並維持比例 */
+    right: 20px; 
+    top: 15px;
+    /* 使用 scaleX(-1) 翻轉，並配合圓角修正 */
+    transform: rotate(40deg) scaleX(-1); 
   }
   
-  /* 中心圓：稍微加大一點，壓在絲帶交接處 */
+  /* 中心圓：稍微上移一點點，壓住交接處 */
   .bow-center { 
     position: absolute; 
     width: 75px; height: 75px; 
     background: #eab308; 
     border-radius: 50%; 
-    top: 50%; left: 50%; 
+    top: 55%; left: 50%; 
     transform: translate(-50%, -50%); 
     z-index: 16; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
-
+  
   /* ... 剩下的 CSS 樣式維持原樣 ... */
   .click-hint { color: #ffd700; font-size: 22px; font-weight: 900; cursor: pointer; text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); animation: hintPulse 2s infinite ease-in-out; margin-bottom: 40px; letter-spacing: 1px; }
   .click-hint small { display: block; font-size: 14px; font-weight: 400; margin-top: 5px; opacity: 0.8; }
