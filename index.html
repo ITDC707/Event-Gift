@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>活動開箱 - 最終整合版</title>
+<title>活動開箱 - 精緻縮小版</title>
 
 <style>
   body {
@@ -20,10 +20,10 @@
 
   .container {
     text-align: center;
-    max-width: 1200px;
+    max-width: 1100px;
   }
 
-  /* --- 巨大禮物盒設定 --- */
+  /* --- 禮物盒設定 (保持大尺寸) --- */
   .gift-box {
     width: 400px;
     height: 400px;
@@ -56,48 +56,46 @@
 
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-  .title { font-size: 36px; color: #facc15; margin-bottom: 40px; font-weight: bold; }
+  .title { font-size: 32px; color: #facc15; margin-bottom: 30px; font-weight: bold; }
 
-  /* --- 修正後的卡片設定 --- */
+  /* --- 縮小後的精緻卡片設定 --- */
   .activity-card {
     background: white;
     color: #1e293b;
-    padding: 30px 20px;
-    border-radius: 30px;
-    width: 340px;       /* 縮小寬度 */
-    height: 400px;      /* 縮小高度 */
+    padding: 25px 20px;
+    border-radius: 25px;
+    width: 310px;       /* 寬度從 340px 縮小 */
+    min-height: 320px;  /* 高度從 400px 大幅縮小 */
     display: inline-flex;
     flex-direction: column;
-    justify-content: flex-start; /* 頂部對齊，確保日期整齊 */
+    justify-content: flex-start; 
     vertical-align: top;
     margin: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     transition: transform 0.3s;
     box-sizing: border-box;
-    overflow: hidden;
   }
 
   .activity-card:hover { transform: translateY(-10px); }
 
-  /* 統一日期樣式與間距 */
   .event-date {
-    font-size: 18px;
+    font-size: 16px;
     color: #94a3b8;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-weight: 600;
     display: block;
   }
 
   .activity-card h3 {
-    font-size: 22px;
-    margin: 0 0 15px 0;
+    font-size: 19px;    /* 稍微調小字體以適應窄框 */
+    margin: 0 0 12px 0;
     color: #ef4444;
     line-height: 1.3;
     font-weight: 700;
   }
 
   .activity-card p {
-    font-size: 16px;
+    font-size: 15px;
     margin: 0;
     color: #475569;
     line-height: 1.5;
@@ -144,7 +142,6 @@ function openGift() {
   const activities = document.getElementById("activities");
   gift.classList.add("open");
   
-  // 灑花特效
   confetti({ 
     particleCount: 400, 
     spread: 160, 
