@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>活動開箱 - 寬敞版</title>
+<title>活動開箱 - 最終整合版</title>
 
 <style>
   body {
@@ -14,21 +14,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* 改為 min-height 以防內容過多時可捲動 */
+    min-height: 100vh;
     padding: 20px;
   }
 
   .container {
     text-align: center;
-    max-width: 1300px;
+    max-width: 1200px;
   }
 
   /* --- 巨大禮物盒設定 --- */
   .gift-box {
-    width: 400px; /* 稍微縮小一點禮物盒，平衡整體視覺 */
+    width: 400px;
     height: 400px;
     background: #ef4444; 
-    margin: 50px auto;
+    margin: 40px auto;
     position: relative;
     border-radius: 50px;
     cursor: pointer;
@@ -56,48 +56,51 @@
 
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-  .title { font-size: 38px; color: #facc15; margin-bottom: 50px; font-weight: bold; }
+  .title { font-size: 36px; color: #facc15; margin-bottom: 40px; font-weight: bold; }
 
-  /* --- 加大後的卡片設定 --- */
+  /* --- 修正後的卡片設定 --- */
   .activity-card {
     background: white;
     color: #1e293b;
-    padding: 40px 30px; /* 增加內距 */
-    border-radius: 35px;
-    width: 380px;       /* 寬度加大 */
-    height: 450px;      /* 高度顯著加大 */
+    padding: 30px 20px;
+    border-radius: 30px;
+    width: 340px;       /* 縮小寬度 */
+    height: 400px;      /* 縮小高度 */
     display: inline-flex;
     flex-direction: column;
-    justify-content: flex-start; /* 改為從上方開始排列 */
+    justify-content: flex-start; /* 頂部對齊，確保日期整齊 */
     vertical-align: top;
-    margin: 15px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    margin: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     transition: transform 0.3s;
-    box-sizing: border-box; /* 確保 padding 不影響總寬高 */
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
-  .activity-card:hover { transform: translateY(-15px); }
+  .activity-card:hover { transform: translateY(-10px); }
 
+  /* 統一日期樣式與間距 */
   .event-date {
-    font-size: 20px;
+    font-size: 18px;
     color: #94a3b8;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-weight: 600;
+    display: block;
   }
 
   .activity-card h3 {
-    font-size: 24px;
-    margin: 0 0 25px 0;
+    font-size: 22px;
+    margin: 0 0 15px 0;
     color: #ef4444;
-    line-height: 1.4;
+    line-height: 1.3;
     font-weight: 700;
   }
 
   .activity-card p {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
     color: #475569;
-    line-height: 1.6;
+    line-height: 1.5;
   }
 </style>
 </head>
@@ -127,8 +130,8 @@
     </div>
 
     <div class="activity-card">
-      <h3>2026 臺大國際人才就業媒合會 2026 NTU International Career Fair</h3>
       <div class="event-date">2026 / 05 / 28</div>
+      <h3>2026 臺大國際人才就業媒合會 2026 NTU International Career Fair</h3>
       <p>從校園出發，接軌全球舞台 Start from campus and connect with the global stage.</p>
     </div>
   </div>
@@ -140,7 +143,15 @@ function openGift() {
   const gift = document.getElementById("gift");
   const activities = document.getElementById("activities");
   gift.classList.add("open");
-  confetti({ particleCount: 400, spread: 160, origin: { y: 0.5 }, scalar: 1.2 });
+  
+  // 灑花特效
+  confetti({ 
+    particleCount: 400, 
+    spread: 160, 
+    origin: { y: 0.5 }, 
+    scalar: 1.2 
+  });
+
   setTimeout(() => {
     gift.style.display = "none";
     activities.style.display = "block";
