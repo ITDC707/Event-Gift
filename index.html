@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>活動開箱 - 精緻縮小版</title>
+<title>活動開箱 - 三色邊框精緻版</title>
 
 <style>
   body {
@@ -20,10 +20,10 @@
 
   .container {
     text-align: center;
-    max-width: 1100px;
+    max-width: 1150px;
   }
 
-  /* --- 禮物盒設定 (保持大尺寸) --- */
+  /* --- 禮物盒設定 --- */
   .gift-box {
     width: 400px;
     height: 400px;
@@ -44,7 +44,6 @@
   .bow::after { right: 0; transform: rotate(105deg) scaleX(-1); }
   .bow-center { position: absolute; width: 60px; height: 60px; background: #eab308; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 11; }
 
-  /* 開箱動畫 */
   .open { animation: openBox 1s forwards ease-in-out; }
   @keyframes openBox { 0% { transform: scale(1); } 100% { transform: scale(0) rotate(360deg); opacity: 0; } }
 
@@ -56,27 +55,36 @@
 
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-  .title { font-size: 32px; color: #facc15; margin-bottom: 30px; font-weight: bold; }
+  .title { font-size: 32px; color: #facc15; margin-bottom: 35px; font-weight: bold; }
 
-  /* --- 縮小後的精緻卡片設定 --- */
+  /* --- 關鍵：白色-黃色-白色的卡片設計 --- */
   .activity-card {
-    background: white;
+    background: white; /* 內層白色 */
     color: #1e293b;
     padding: 25px 20px;
-    border-radius: 25px;
-    width: 310px;       /* 寬度從 340px 縮小 */
-    min-height: 320px;  /* 高度從 400px 大幅縮小 */
+    border-radius: 30px; /* 圓角調整 */
+    width: 310px;
+    min-height: 320px;
     display: inline-flex;
     flex-direction: column;
     justify-content: flex-start; 
     vertical-align: top;
-    margin: 10px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    margin: 15px;
+    
+    /* 製作三色層次：1.黃色邊框 2.外層白色光暈陰影 */
+    border: 4px solid #facc15; /* 中間層：黃色邊框 */
+    box-shadow: 
+      0 0 0 6px white,           /* 外層：白色厚邊框感 */
+      0 15px 40px rgba(0,0,0,0.5); /* 最底層：深色陰影讓卡片浮現 */
+    
     transition: transform 0.3s;
     box-sizing: border-box;
+    position: relative;
   }
 
-  .activity-card:hover { transform: translateY(-10px); }
+  .activity-card:hover { 
+    transform: translateY(-10px) scale(1.02); 
+  }
 
   .event-date {
     font-size: 16px;
@@ -87,7 +95,7 @@
   }
 
   .activity-card h3 {
-    font-size: 19px;    /* 稍微調小字體以適應窄框 */
+    font-size: 19px;
     margin: 0 0 12px 0;
     color: #ef4444;
     line-height: 1.3;
