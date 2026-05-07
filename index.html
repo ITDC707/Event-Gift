@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>活動開箱 - 大禮物版</title>
+<title>活動開箱 - 超巨大禮物版</title>
 
 <style>
   body {
@@ -22,29 +22,29 @@
     text-align: center;
   }
 
-  /* --- 禮物盒本體 (放大版) --- */
+  /* --- 超巨大禮物盒 (480px) --- */
   .gift-box {
-    width: 240px;  /* 從 160px 放大 */
-    height: 240px; /* 從 160px 放大 */
+    width: 480px;  /* 寬度放大 2 倍 */
+    height: 480px; /* 高度放大 2 倍 */
     background: #ef4444; 
     margin: auto;
     position: relative;
-    border-radius: 30px; /* 圓角也稍微加大更可愛 */
+    border-radius: 60px; /* 圓角隨之加大 */
     cursor: pointer;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
   }
 
   .gift-box:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-20px) scale(1.02);
   }
 
-  /* --- 絲帶與蝴蝶結 (等比例放大) --- */
+  /* --- 絲帶與蝴蝶結 (等比例放大 2 倍) --- */
   
-  /* 垂直絲帶 */
   .ribbon-v {
     position: absolute;
-    width: 45px; /* 寬度加大 */
+    width: 90px; /* 絲帶寬度 45 -> 90 */
     height: 100%;
     background: #facc15;
     left: 50%;
@@ -52,47 +52,43 @@
     z-index: 2;
   }
 
-  /* 水平絲帶 */
   .ribbon-h {
     position: absolute;
     width: 100%;
-    height: 45px; /* 高度加大 */
+    height: 90px; /* 絲帶高度 45 -> 90 */
     top: 50%;
     transform: translateY(-50%);
     background: #facc15;
     z-index: 1; 
   }
 
-  /* 蝴蝶結容器 */
   .bow {
     position: absolute;
-    top: -40px; /* 向上偏移更多 */
+    top: -80px; /* 偏移量加倍 */
     left: 50%;
     transform: translateX(-50%);
-    width: 120px; /* 蝴蝶結變寬 */
-    height: 60px;
+    width: 240px; /* 寬度 120 -> 240 */
+    height: 120px;
     z-index: 10;
   }
 
-  /* 蝴蝶結左右圈圈 */
   .bow::before, .bow::after {
     content: "";
     position: absolute;
-    width: 70px; /* 圈圈變大 */
-    height: 70px;
+    width: 140px; /* 圈圈 70 -> 140 */
+    height: 140px;
     background: #facc15;
     border-radius: 50% 50% 0 50%;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
   }
 
   .bow::before { left: 0; transform: rotate(-15deg); }
   .bow::after { right: 0; transform: rotate(105deg) scaleX(-1); }
 
-  /* 蝴蝶結中心 */
   .bow-center {
     position: absolute;
-    width: 35px; /* 中心結變大 */
-    height: 35px;
+    width: 70px; /* 中心結 35 -> 70 */
+    height: 70px;
     background: #eab308;
     border-radius: 50%;
     top: 50%;
@@ -101,18 +97,17 @@
     z-index: 11;
   }
 
-  /* --- 動畫設定 --- */
+  /* --- 動畫 --- */
   .open {
-    animation: openBox 0.8s forwards ease-in-out;
+    animation: openBox 1s forwards ease-in-out;
   }
 
   @keyframes openBox {
     0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); }
+    50% { transform: scale(1.1); }
     100% { transform: scale(0) rotate(360deg); opacity: 0; }
   }
 
-  /* 活動卡片顯示區 */
   .activities {
     display: none;
     margin-top: 20px;
@@ -120,26 +115,25 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .title { 
+    font-size: 36px; 
+    color: #facc15;
+    margin-bottom: 40px;
   }
 
   .activity-card {
     background: white;
     color: #1e293b;
-    padding: 25px;
-    border-radius: 20px;
-    width: 200px;
+    padding: 30px;
+    border-radius: 25px;
+    width: 250px;
     display: inline-block;
     margin: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  }
-
-  .title { 
-    margin-bottom: 30px; 
-    font-size: 28px; 
-    color: #facc15;
-    font-weight: bold;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
   }
 </style>
 </head>
@@ -171,18 +165,18 @@ function openGift() {
 
   gift.classList.add("open");
   
-  // 灑花效果
+  // 增加紙花噴發量與範圍以匹配巨大盒子
   confetti({ 
-    particleCount: 200, 
-    spread: 100, 
-    origin: { y: 0.6 },
-    colors: ['#ef4444', '#facc15', '#ffffff']
+    particleCount: 400, 
+    spread: 160, 
+    origin: { y: 0.5 },
+    scalar: 1.2
   });
 
   setTimeout(() => {
     gift.style.display = "none";
     activities.style.display = "block";
-  }, 700);
+  }, 800);
 }
 </script>
 
