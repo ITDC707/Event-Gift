@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>活動開箱 - 三色邊框精緻版</title>
+<title>活動開箱 - 文字置中精緻版</title>
 
 <style>
   body {
@@ -57,25 +57,26 @@
 
   .title { font-size: 32px; color: #facc15; margin-bottom: 35px; font-weight: bold; }
 
-  /* --- 關鍵：白色-黃色-白色的卡片設計 --- */
+  /* --- 卡片設計：文字置中與三色邊框 --- */
   .activity-card {
-    background: white; /* 內層白色 */
+    background: white; 
     color: #1e293b;
     padding: 25px 20px;
-    border-radius: 30px; /* 圓角調整 */
+    border-radius: 30px;
     width: 310px;
-    min-height: 320px;
+    min-height: 340px; /* 稍微增加一點高度確保置中空間 */
     display: inline-flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: center; /* 垂直置中 */
+    align-items: center;     /* 水平置中 */
+    text-align: center;      /* 文字內容置中 */
     vertical-align: top;
     margin: 15px;
     
-    /* 製作三色層次：1.黃色邊框 2.外層白色光暈陰影 */
-    border: 4px solid #facc15; /* 中間層：黃色邊框 */
+    border: 4px solid #facc15; 
     box-shadow: 
-      0 0 0 6px white,           /* 外層：白色厚邊框感 */
-      0 15px 40px rgba(0,0,0,0.5); /* 最底層：深色陰影讓卡片浮現 */
+      0 0 0 6px white,           
+      0 15px 40px rgba(0,0,0,0.5); 
     
     transition: transform 0.3s;
     box-sizing: border-box;
@@ -89,24 +90,26 @@
   .event-date {
     font-size: 16px;
     color: #94a3b8;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-weight: 600;
-    display: block;
+    width: 100%;
   }
 
   .activity-card h3 {
     font-size: 19px;
-    margin: 0 0 12px 0;
+    margin: 0 0 15px 0;
     color: #ef4444;
-    line-height: 1.3;
+    line-height: 1.4;
     font-weight: 700;
+    width: 100%;
   }
 
   .activity-card p {
     font-size: 15px;
     margin: 0;
     color: #475569;
-    line-height: 1.5;
+    line-height: 1.6;
+    width: 100%;
   }
 </style>
 </head>
