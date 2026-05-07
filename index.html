@@ -10,7 +10,7 @@
   body {
     margin: 0;
     font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
-    background-color: #243b55; /* 更亮一點的深藍色 */
+    background-color: #243b55;
     background-image: 
       radial-gradient(circle at center, #2c5364 0%, #203a43 50%, #0f2027 100%);
     color: white;
@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
     overflow-x: hidden;
     position: relative;
   }
@@ -26,58 +26,55 @@
   /* --- 豐富的背景元素層 --- */
   .bg-decor {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* 飛機動畫加回 */
   .plane {
     position: absolute;
     font-size: 50px;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
-    animation: flight 15s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));
+    animation: flight 18s linear infinite;
     z-index: 5;
   }
   @keyframes flight {
-    0% { transform: translate(-10vw, 40vh) rotate(15deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translate(110vw, 10vh) rotate(15deg); opacity: 0; }
+    0% { transform: translate(-15vw, 45vh) rotate(12deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translate(115vw, 8vh) rotate(12deg); opacity: 0; }
   }
 
-  /* 增加色彩的國際元素 */
-  .item { position: absolute; font-size: 80px; filter: opacity(0.3) saturate(1.5); transition: 0.5s; }
-  .item:hover { filter: opacity(0.6) saturate(2); }
+  .item { position: absolute; font-size: 80px; filter: opacity(0.3) saturate(1.3); transition: 0.5s ease; }
+  .item:hover { filter: opacity(0.6) saturate(1.8); transform: scale(1.1); }
   
-  .globe { top: 10%; left: 5%; transform: rotate(-10deg); }
-  .passport { bottom: 15%; left: 10%; transform: rotate(15deg); }
-  .compass { top: 15%; right: 8%; transform: rotate(20deg); }
-  .map { bottom: 10%; right: 5%; transform: rotate(-10deg); }
-  .camera { bottom: 50%; right: 12%; font-size: 50px; }
+  .globe { top: 8%; left: 5%; transform: rotate(-10deg); }
+  .passport { bottom: 12%; left: 8%; transform: rotate(15deg); }
+  .compass { top: 12%; right: 6%; transform: rotate(20deg); }
+  .map { bottom: 8%; right: 5%; transform: rotate(-10deg); }
+  .camera { top: 45%; right: 10%; font-size: 50px; }
 
   /* --- 內容容器 --- */
   .container {
     text-align: center;
     max-width: 1200px;
+    width: 100%;
     z-index: 10;
     position: relative;
   }
 
   /* --- 禮物盒與蝴蝶結 --- */
   .gift-box {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     background: #ef4444; 
-    margin: 50px auto;
+    margin: 60px auto;
     position: relative;
-    border-radius: 40px;
+    border-radius: 45px;
     cursor: pointer;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    transition: transform 0.3s ease;
+    box-shadow: 0 35px 90px rgba(0,0,0,0.6);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .gift-box:hover { transform: scale(1.05); }
 
@@ -86,12 +83,12 @@
 
   .bow {
     position: absolute;
-    top: -55px; 
+    top: -60px; 
     left: 50%;
     transform: translateX(-50%);
     width: 220px;
-    height: 110px;
-    z-index: 15; /* 確保在所有部件最上方 */
+    height: 120px;
+    z-index: 15;
   }
   .bow::before, .bow::after {
     content: "";
@@ -106,8 +103,7 @@
   .bow::after { right: 0; transform: rotate(105deg) scaleX(-1); }
   .bow-center {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 65px; height: 65px;
     background: #eab308;
     border-radius: 50%;
     top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -117,36 +113,47 @@
   .open { animation: openBox 0.8s forwards; }
   @keyframes openBox { 100% { transform: scale(0) rotate(720deg); opacity: 0; } }
 
-  /* --- 活動卡片與標題 --- */
-  .activities { display: none; animation: fadeIn 0.8s ease forwards; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  /* --- 活動卡片區塊 --- */
+  .activities { 
+    display: none; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px;
+    animation: fadeIn 1s ease-out forwards; 
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
-  .title { font-size: 36px; color: #facc15; margin-bottom: 40px; font-weight: bold; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+  .title { 
+    font-size: 36px; 
+    color: #ffd700; 
+    margin-bottom: 50px; 
+    font-weight: 800; 
+    text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    line-height: 1.4;
+  }
 
   .activity-card {
     background: white; 
     color: #1e293b;
-    padding: 35px 25px;
-    border-radius: 35px;
-    width: 320px;
-    min-height: 360px;
-    display: inline-flex;
+    padding: 40px 25px;
+    border-radius: 40px;
+    width: 350px;
+    min-height: 400px;
+    display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center;     
     text-align: center;      
-    vertical-align: top;
-    margin: 15px;
-    border: 4px solid #facc15; 
-    box-shadow: 0 0 0 6px white, 0 20px 50px rgba(0,0,0,0.5); 
-    transition: transform 0.3s;
+    border: 5px solid #facc15; 
+    box-shadow: 0 0 0 8px white, 0 25px 60px rgba(0,0,0,0.5); 
+    transition: all 0.4s ease;
     box-sizing: border-box;
   }
   .activity-card:hover { transform: translateY(-15px); }
 
-  .event-date { font-size: 16px; color: #64748b; margin-bottom: 15px; font-weight: bold; }
+  .event-date { font-size: 17px; color: #7b8ba1; margin-bottom: 15px; font-weight: 700; }
   .activity-card h3 { font-size: 20px; margin: 0 0 15px 0; color: #ef4444; line-height: 1.4; font-weight: 900; }
-  .activity-card p { font-size: 15px; color: #334155; line-height: 1.6; margin: 0; }
+  .activity-card p { font-size: 15px; color: #475569; line-height: 1.6; margin: 0; }
 </style>
 </head>
 
@@ -169,24 +176,24 @@
     </div>
 
     <div id="activities" class="activities">
-      <div class="title">✨ 專屬活動推薦 Exclusive Event Recommendations ✨</div>
+      <div class="title">✨ 專屬活動推薦<br>Exclusive Event Recommendations ✨</div>
       
       <div class="activity-card">
         <div class="event-date">2026 / 05 / 15</div>
-        <h3>日月光半導體說明會<br>ASE Company Session</h3>
-        <p>走進晶片世界，掌握科技未來。<br>Explore the future of tech.</p>
+        <h3>日月光半導體製造股份有限公司說明會<br>Advanced Semiconductor Engineering, Inc Company Info Session</h3>
+        <p>走進晶片世界，掌握科技未來<br>Step into the world of chips and master the future of technology.</p>
       </div>
 
       <div class="activity-card">
         <div class="event-date">2026 / 05 / 20</div>
-        <h3>跨領域人才座談會<br>Career Seminar</h3>
-        <p>打破文化邊界，開啟無限可能。<br>Unlock global career opportunities.</p>
+        <h3>跨領域人才職涯發展座談會<br>Interdisciplinary Talent Career Development Seminar</h3>
+        <p>跨出領域界線，開啟無限職涯可能<br>Break out of boundaries and create unlimited career opportunities.</p>
       </div>
 
       <div class="activity-card">
         <div class="event-date">2026 / 05 / 28</div>
-        <h3>2026 臺大國際人才媒合會<br>NTU Career Fair</h3>
-        <p>接軌全球舞台，點亮就業地圖。<br>Connect with the global stage.</p>
+        <h3>2026臺大國際人才就業媒合會<br>2026 NTU International Career Fair</h3>
+        <p>從校園出發，接軌全球舞台<br>Start from campus and connect with the global stage.</p>
       </div>
     </div>
   </div>
@@ -198,15 +205,14 @@ function openGift() {
   const activities = document.getElementById("activities");
   gift.classList.add("open");
   
-  // 色彩豐富的噴發效果
   confetti({ 
-    particleCount: 500, spread: 100, origin: { y: 0.6 },
+    particleCount: 600, spread: 100, origin: { y: 0.6 },
     colors: ['#ff0000', '#ffd700', '#ffffff', '#0000ff', '#00ff00']
   });
 
   setTimeout(() => {
     gift.style.display = "none";
-    activities.style.display = "block";
+    activities.style.display = "flex";
   }, 750);
 }
 </script>
