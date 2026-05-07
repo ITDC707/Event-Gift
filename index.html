@@ -81,49 +81,49 @@
   .ribbon-v { position: absolute; width: 55px; height: 100%; background: #facc15; left: 50%; transform: translateX(-50%); z-index: 2; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
   .ribbon-h { position: absolute; width: 100%; height: 55px; top: 50%; transform: translateY(-50%); background: #facc15; z-index: 1; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
   
-/* 🎀 蝴蝶結尖角修正：優化弧度與對齊 🎀 */
+/* 🎀 蝴蝶結終極修正：確保不移位、無尖角 🎀 */
   .bow { 
     position: absolute; 
     top: -50px; 
     left: 50%; 
     transform: translateX(-50%); 
-    width: 220px; height: 120px; 
+    width: 200px; height: 100px; 
     z-index: 15; 
   }
   
   .bow::before, .bow::after { 
     content: ""; 
     position: absolute; 
-    width: 100px; height: 100px; 
+    width: 90px; height: 90px; 
     background: #facc15; 
-    /* 關鍵修正：調整圓角比例，讓頂端變圓滑，收起尖角 */
-    border-radius: 50% 50% 10% 50%; 
     box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    /* 讓旋轉中心就在絲帶與圓餅交接的底部 */
     transform-origin: bottom center; 
   }
   
-  /* 左半邊絲帶：修正旋轉角度與位置 */
+  /* 左半邊絲帶 */
   .bow::before { 
-    left: 20px; 
-    top: 15px;
-    transform: rotate(-40deg); 
+    left: 15px; 
+    top: 5px;
+    border-radius: 70% 70% 10% 70%; /* 圓潤的外弧 */
+    transform: rotate(-35deg); 
   }
   
-  /* 右半邊絲帶：修正對稱與尖角問題 */
+  /* 右半邊絲帶：不再使用 scaleX，直接定義形狀 */
   .bow::after { 
-    right: 20px; 
-    top: 15px;
-    /* 使用 scaleX(-1) 翻轉，並配合圓角修正 */
-    transform: rotate(40deg) scaleX(-1); 
+    right: 15px; 
+    top: 5px;
+    border-radius: 70% 70% 70% 10%; /* 鏡像圓潤弧度 */
+    transform: rotate(35deg); 
   }
   
-  /* 中心圓：稍微上移一點點，壓住交接處 */
+  /* 中心圓：壓在兩片絲帶的正中間 */
   .bow-center { 
     position: absolute; 
-    width: 75px; height: 75px; 
+    width: 70px; height: 70px; 
     background: #eab308; 
     border-radius: 50%; 
-    top: 55%; left: 50%; 
+    top: 60%; left: 50%; 
     transform: translate(-50%, -50%); 
     z-index: 16; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
