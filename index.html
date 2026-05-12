@@ -117,7 +117,7 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
 
-  /* --- 活動卡片與內容 --- */
+  /* --- 活動卡片區 --- */
   .click-hint { color: #ffd700; font-size: 22px; font-weight: 900; cursor: pointer; text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); animation: hintPulse 2s infinite ease-in-out; margin-bottom: 40px; letter-spacing: 1px; }
   .click-hint small { display: block; font-size: 14px; font-weight: 400; margin-top: 5px; opacity: 0.8; }
   @keyframes hintPulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 25px rgba(255, 215, 0, 0.9); } }
@@ -136,7 +136,7 @@
     padding: 40px 30px;
     border-radius: 40px;
     width: 380px; 
-    min-height: 420px;
+    min-height: 480px;
     display: flex; 
     flex-direction: column;
     justify-content: flex-start; 
@@ -150,13 +150,14 @@
     cursor: pointer;
   }
   .activity-card:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 0 0 8px white, 0 0 0 15px #ffd700, 0 45px 90px rgba(0,0,0,0.8); }
+  
   .event-date { font-size: 17px; color: #64748b; margin-bottom: 25px; font-weight: 800; }
   .activity-card h3 { font-size: 21px; margin: 0 0 25px 0; color: #ef4444; line-height: 1.5; font-weight: 900; }
   .activity-card p { font-size: 16px; color: #334155; line-height: 1.8; margin-bottom: 20px; }
 
-  /* 🕒 報名時間樣式 */
+  /* 🕒 報名期間樣式 */
   .reg-time {
-    margin-top: auto; /* 推到最底部 */
+    margin-top: auto; 
     padding-top: 15px;
     border-top: 1px dashed #cbd5e1;
     width: 100%;
@@ -169,6 +170,24 @@
     display: block;
     margin-top: 4px;
     font-size: 16px;
+  }
+
+  /* 👉 點擊前往報名樣式 */
+  .click-go {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 900;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+    width: 100%;
+    justify-content: center;
+  }
+  .activity-card:hover .click-go {
+    transform: translateX(5px);
+    color: #b91c1c;
   }
 
   /* ✨ 手機版響應式優化 ✨ */
@@ -185,6 +204,7 @@
     .event-date { font-size: 14px; margin-bottom: 15px; }
     .reg-time { font-size: 12px; }
     .reg-time b { font-size: 14px; }
+    .click-go { font-size: 13px; }
   }
 </style>
 </head>
@@ -225,16 +245,18 @@
           🕒 報名期間 / Registration Period:
           <b>即日起～2026.05.14</b>
         </div>
+        <div class="click-go">👉 點擊前往報名 / Click to Register</div>
       </a>
 
       <a href="https://itouch.cycu.edu.tw/go/?w=15435@acpm3" target="_blank" class="activity-card">
         <div class="event-date">2026 / 05 / 20</div>
-        <h3>跨領域人才職涯座談會<br>Interdisciplinary Talent Career Seminar</h3>
+        <h3>跨領域人才職涯發展座談會<br>Interdisciplinary Talent Career Seminar</h3>
         <p>跨出領域界線，開啟無限可能<br>Break out of boundaries and create unlimited career opportunities</p>
         <div class="reg-time">
           🕒 報名期間 / Registration Period:
           <b>即日起～2026.05.19</b>
         </div>
+        <div class="click-go">👉 點擊前往報名 / Click to Register</div>
       </a>
 
       <a href="https://itouch.cycu.edu.tw/go/?w=15436@acpm3" target="_blank" class="activity-card">
@@ -245,6 +267,7 @@
           🕒 報名期間 / Registration Period:
           <b>即日起～2026.05.26</b>
         </div>
+        <div class="click-go">👉 點擊前往報名 / Click to Register</div>
       </a>
     </div>
   </div>
