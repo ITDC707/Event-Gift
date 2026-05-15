@@ -148,12 +148,36 @@
     backdrop-filter: blur(10px);
     text-decoration: none;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
   }
   .activity-card:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 0 0 8px white, 0 0 0 15px #ffd700, 0 45px 90px rgba(0,0,0,0.8); }
   
+  /* 已結束卡片置換樣式 */
+  .disabled-card {
+    opacity: 0.75;
+    border-color: #cbd5e1;
+    box-shadow: 0 0 0 8px white, 0 0 0 13px #94a3b8, 0 20px 40px rgba(0,0,0,0.5);
+    pointer-events: none;
+    cursor: default;
+  }
+  .disabled-card:hover { transform: none; box-shadow: 0 0 0 8px white, 0 0 0 13px #94a3b8, 0 20px 40px rgba(0,0,0,0.5); }
+  .disabled-card h3 { color: #64748b; }
+
+  /* 右上角已結束紅標 */
+  .closed-badge {
+    position: absolute;
+    top: 18px; right: 18px;
+    background: #ef4444; color: white;
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 13px; font-weight: 900;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+    z-index: 5;
+  }
+
   .event-date { font-size: 17px; color: #64748b; margin-bottom: 25px; font-weight: 800; }
   .activity-card h3 { font-size: 21px; margin: 0 0 25px 0; color: #ef4444; line-height: 1.5; font-weight: 900; }
-  .activity-card p { font-size: 16px; color: #334155; line-height: 1.8; margin-bottom: 20px; }
+  .activity-card p { font-size: 16px; color: #334155; line-height: 1.8; margin-bottom: 20px; text-align: center; }
 
   /* 🕒 報名期間樣式 */
   .reg-time {
@@ -171,6 +195,7 @@
     margin-top: 4px;
     font-size: 16px;
   }
+  .disabled-card .reg-time b { color: #64748b; text-decoration: line-through; }
 
   /* 👉 點擊前往報名樣式 */
   .click-go {
@@ -189,6 +214,7 @@
     transform: translateX(5px);
     color: #b91c1c;
   }
+  .click-go.ended { color: #64748b; }
 
   /* ✨ 手機版響應式優化 ✨ */
   @media (max-width: 600px) {
@@ -199,6 +225,7 @@
       border-width: 4px;
       box-shadow: 0 0 0 5px white, 0 0 0 10px #eab308, 0 20px 40px rgba(0,0,0,0.5);
     }
+    .disabled-card { box-shadow: 0 0 0 5px white, 0 0 0 10px #94a3b8, 0 20px 40px rgba(0,0,0,0.5); }
     .activity-card h3 { font-size: 18px; margin-bottom: 15px; }
     .activity-card p { font-size: 14px; }
     .event-date { font-size: 14px; margin-bottom: 15px; }
@@ -237,15 +264,16 @@
     <div id="activities" class="activities">
       <div class="title" style="width: 100%;">✨ 5月活動推薦 ✨<br>✨ May Event Recommendations ✨</div>
       
-      <a href="https://itouch.cycu.edu.tw/go/?w=15434@acpm3" target="_blank" class="activity-card">
+      <a href="#" class="activity-card disabled-card">
+        <div class="closed-badge">已結束 / Closed</div>
         <div class="event-date">2026 / 05 / 15</div>
         <h3>日月光半導體製造股份有限公司說明會<br>ASE Company Info Session</h3>
         <p>走進晶片世界，掌握科技未來<br>Step into the world of chips and master the future of technology</p>
         <div class="reg-time">
           🕒 報名期間 / Registration Period:
-          <b>即日起～2026.05.14</b>
+          <b>已結束 / Registration Closed</b>
         </div>
-        <div class="click-go">👉 點擊前往報名 / Click to Register</div>
+        <div class="click-go ended">🔒 已結束 / Ended</div>
       </a>
 
       <a href="https://itouch.cycu.edu.tw/go/?w=15435@acpm3" target="_blank" class="activity-card">
